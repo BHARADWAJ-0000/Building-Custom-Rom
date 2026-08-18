@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# ⚠️ This script is intended for Ubuntu 22.04 LTS. It may not function as expected on other systems.
+# ⚠️ This script is optimized for Ubuntu 26.04 LTS.
 
 set -euo pipefail
 IFS=$'\n\t'
@@ -59,7 +59,7 @@ print_header() {
     echo -e "${C_CYAN}║${C_NC}     ${C_WHITE}${ICON_ANDROID}  ${C_BOLD}ANDROID BUILD ENVIRONMENT SETUP${C_NC}  ${ICON_BUILD}         ${C_CYAN}║${C_NC}"
     echo -e "${C_CYAN}║${C_NC}                                                          ${C_CYAN}║${C_NC}"
     echo -e "${C_CYAN}║${C_NC}        ${C_DIM}Automated setup for AOSP development${C_NC}            ${C_CYAN}║${C_NC}"
-    echo -e "${C_CYAN}║${C_NC}           ${C_DIM}Ubuntu 22.04 LTS Optimized${C_NC}                   ${C_CYAN}║${C_NC}"
+    echo -e "${C_CYAN}║${C_NC}           ${C_DIM}Ubuntu 26.04 LTS Optimized${C_NC}                   ${C_CYAN}║${C_NC}"
     echo -e "${C_CYAN}║${C_NC}                                                          ${C_CYAN}║${C_NC}"
     echo -e "${C_CYAN}╚══════════════════════════════════════════════════════════╝${C_NC}"
     echo
@@ -77,8 +77,8 @@ check_ubuntu_version() {
     echo -e "${C_WHITE}┌─ ${ICON_SYSTEM} System Check${C_NC}"
     echo -e "${C_WHITE}│${C_NC}"
     
-    if [[ "$version" != "22.04" ]]; then
-        echo -e "${C_WHITE}│${C_NC}  ${C_YELLOW}${ICON_WARN} Warning: Optimized for Ubuntu 22.04 LTS${C_NC}"
+    if [[ "$version" != "26.04" ]]; then
+        echo -e "${C_WHITE}│${C_NC}  ${C_YELLOW}${ICON_WARN} Warning: Optimized for Ubuntu 26.04 LTS${C_NC}"
         echo -e "${C_WHITE}│${C_NC}  ${C_YELLOW}Current: ${os_name}${C_NC}"
         echo -e "${C_WHITE}│${C_NC}"
         echo -e -n "${C_WHITE}└${C_NC}  Continue anyway? (y/N): "
@@ -262,7 +262,8 @@ main() {
 
     # Step 2
     show_step "${ICON_SETUP} Installing Development Tools"
-    local essential_packages=(build-essential curl wget git nano tmux byobu unzip zip ccache software-properties-common lsb-release gnupg2 ca-certificates python3 python3-pip cmake ninja-build pkg-config)
+    # Added python3-venv for modern Ubuntu Python environment isolation requirements
+    local essential_packages=(build-essential curl wget git nano tmux byobu unzip zip ccache software-properties-common lsb-release gnupg2 ca-certificates python3 python3-pip python3-venv cmake ninja-build pkg-config)
     run_task "Installing essential packages" apt-get install -qq -y "${essential_packages[@]}"
 
     # Step 3

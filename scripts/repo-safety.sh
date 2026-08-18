@@ -33,7 +33,7 @@ repo() {
             sleep 1
             command repo "$@"
         else
-            echo "✅ Smart choice manaic. Create a proper directory first:"
+            echo "✅ Smart choice maniac. Create a proper directory first:"
             echo "   mkdir -p ~/projects/android-source"
             echo "   cd ~/projects/android-source"
             echo "   repo init ..."
