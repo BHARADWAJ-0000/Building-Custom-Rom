@@ -1,7 +1,7 @@
 
 # Android ROM Build Environment Setup
 
-Automated setup scripts for building custom Android ROMs on Ubuntu 22.04 LTS.
+Automated setup scripts for building custom Android ROMs on Ubuntu 26.04 LTS.
 
 ## Repository Setup
 
